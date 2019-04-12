@@ -3,15 +3,16 @@ class TabLink {
     return new TabLink(element)
   }
 
+  static allTabs() {
+    return [...document.querySelectorAll('.tab')]
+  }
+
   constructor(tabElement){
+    const allCards = TabCard.allCards()
+
     this.tabElement = tabElement
     this.tabData = this.tabElement.dataset.tab
-    
-    const tabsContainer = document.querySelector('.tabs')
-    const cardsContainer = document.querySelector('.cards-container')
-    const allTabs = Array.from(tabsContainer.querySelectorAll('.tab'))
-    const allCards = Array.from(cardsContainer.querySelectorAll('.card'))
-   
+
     this.cardElements = 
       (this.tabData === 'all') 
         ? allCards
@@ -25,8 +26,6 @@ class TabLink {
   selectTab(){
 
     // Select all elements with the .tab class on them
-    // const tabs = document.querySelectorAll();
-    
     // Iterate through the NodeList removing the .active-tab class from each element
     // tabs.forEach()
 
@@ -49,6 +48,10 @@ class TabCard {
     return new TabCard(element)
   }
 
+  static allCards() {
+    return [...document.querySelectorAll('.card')]
+  }
+
   constructor(cardElement){
     this.cardElement = cardElement
   }
@@ -59,14 +62,11 @@ class TabCard {
 
 }
 
-/* START HERE: 
+/**
+ * ----------------------------
+ *          Main
+ * ----------------------------
+ */
 
-- Select all classes named ".tab" and assign that value to the tabs variable
-
-- With your selection in place, now chain a .forEach() method onto the tabs variable to iterate over the DOM NodeList
-
-- In your .forEach() method's callback function, return a new instance of TabLink and pass in each tab as a parameter
-
-*/
 const tabs = document.querySelectorAll('.tab')
 tabs.forEach(TabLink.of)
