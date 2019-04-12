@@ -22,6 +22,8 @@ class TabLink {
       [...this.cardElements]
       .map(TabCard.of)
       this.selectTab()
+    
+    this.tabElement.addEventListener('click', this.selectTab.bind(this))
   }
 
   selectTab(){
