@@ -21,25 +21,21 @@ class TabLink {
     this.cards = 
       [...this.cardElements]
       .map(TabCard.of)
+      this.selectTab()
   }
 
   selectTab(){
+    // strip all instances of tabItem of active tab class
+    this.constructor.allTabs().forEach(removeClass('active-tab'))
 
-    // Select all elements with the .tab class on them
-    // Iterate through the NodeList removing the .active-tab class from each element
-    // tabs.forEach()
-
-    // Select all of the elements with the .card class on them
-    // const cards = ;
-
-    // Iterate through the NodeList setting the display style each one to 'none'
-    // cards.forEach()
+    // remove all cards from the DOM
+    TabCard.allCards().forEach(card => card.style.display = 'none')
     
-    // Add a class of ".active-tab" to this.tabElement
-    // this.tabElement;
+    // set the currently selected tab to active
+    this.tabElement.classList.add('active-tab')
   
-    // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. Just un-comment the code and study what is happening here.
-    // this.cards.forEach(card => card.selectCard());
+    // render all cards that are associated with the active tab
+    this.cards.forEach(card => card.selectCard());
   }
 }
 
@@ -70,3 +66,25 @@ class TabCard {
 
 const tabs = document.querySelectorAll('.tab')
 tabs.forEach(TabLink.of)
+
+/**
+ * ---------------------------
+ *        Helpers
+ * ----------------------------
+ */
+
+// Strings -> (DOMNode -> DOMNode)
+function removeClass(...classes) {
+  return function(el) {
+    el.classList.remove(...classes)
+    return el
+  }
+}
+
+// Tuple String -> (DOMNode -> DOMNode)
+function setAttr([attr, val]) {
+  return function(el) {
+    el.setAttribute(attr, val)
+    return el
+  }
+}
