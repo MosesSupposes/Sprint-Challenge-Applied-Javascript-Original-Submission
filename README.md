@@ -32,6 +32,10 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+    DOM stands for 'Document Object Model'. It's essentially an API for manipulating HTML and XML documents. Another way you can think of it is as a representation of web pabes that allows developers to programatically alter the style, structure, and content of the page.
+
+    All frontend libraries/frameworks ever made thus far deal directly with the DOM API. In recent years, there's been a trend towards abstracting away the DOM through what's known as a "virtual DOM", and enabling developers to program their UIs in a more declarative, succint style, with an added emphasis on performance (this is achieved by techniques such as "DOM diffing" -- where there's a coordinated arbitrage before making changes to DOM -- and "memoization" -- where different DOM states get cached and are thus able to be repainted to a previous state with minimal computations).
+
 2. What is an event?
 
 3. What is an event listener?
