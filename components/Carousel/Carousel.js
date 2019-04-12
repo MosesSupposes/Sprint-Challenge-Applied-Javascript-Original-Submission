@@ -1,14 +1,72 @@
 class Carousel {
+    static of(element) {
+        return new Carousel(element)
+    }
+
+    get activeDisplay() {
+        return this._activeDisplay
+    }
+
+    set activeDisplay(newDisplay) {
+        this._activeDisplay.style.display = 'none'
+        this.activeIndex = 
+            this.images.findIndex(
+                img => img.src === newDisplay.src
+            )
+        this._activeDisplay = newDisplay
+        this._activeDisplay.style.display = 'block'
+       
+        
+    }
+
+    constructor(element) {
+        this.element = element
+        this.left = this.element.querySelector('.left-button')
+        this.right = this.element.querySelector('.right-button')
+        this.images = Array.from(this.element.querySelectorAll('img'))
+        this.activeIndex = 0
+        this._activeDisplay = this.images[this.activeIndex]
+        this._activeDisplay.style.display = 'block'
+
+        this.left.addEventListener('click', () => this.displayNextImg('left'))
+        this.right.addEventListener('click', () => this.displayNextImg('right'))
+    }
+
+    displayNextImg(direction) {
+        switch(direction) {
+            case 'left': 
+                this.activeDisplay = this.images[this.activeIndex - 1]
+                break
+            case 'right': 
+                this.activeDisplay = this.images[this.activeIndex + 1]
+                break
+        }
+    }
 
 }
 
-let carousel = document.querySelector();
+/**
+ * -------------------------
+ *          Main
+ * -------------------------
+ */
 
-/* If You've gotten this far, you're on your own! Although we will give you some hints:
-    1. You will need to grab a reference to the carousel, and in it grab the laft and right buttons
-    2. You will need to grab a reference to all of the images
-    3. Create a current index
-    4. Those buttons are gonna need some click handlers.
-    5. Think of how you would animate this compoennt. Make the cards slide in and out, or fade. It's up to you!
-    6. Have fun!
-*/
+const carousels = document.querySelectorAll('.carousel')
+carousels.forEach(Carousel.of)
+
+
+
+/**
+ * -------------------------
+ *          Helpers
+ * -------------------------
+ */
+
+// * not curried
+//  Array x ->  Int -> Bool
+function endOfLine(arr, curPosition) {
+    return arr[curPosition] ? true : false
+}
+
+// Can't get helper to work properly...
+// TODO: make carousel wrap when at the end of the line
