@@ -46,7 +46,10 @@ Edit this document to include your answers after each question. Make sure to lea
 
 4. Why would we convert a NodeList into an Array?
 
+    The reason it's common to convert a NodeList into an Array is becuase NodeLists are a slimmer interface that don't have access to the plethora of common utilities that are useful when wrangling with an iterable data structure. When we convert a NodeList to an array, we have access to all the methods on the Array prototype, including `map`, `filter`, and `reduce` -- the holy grail of any iteration you'll ever have to perform.
+
 5. What is a component?
+
 
 ### Git Set up
 
