@@ -50,6 +50,7 @@ Edit this document to include your answers after each question. Make sure to lea
 
 5. What is a component?
 
+    A component is a reusable piece of UI, independent of any other block of code. Components can either be packaged by style or behavior, but in most modern Javascript frameworks and UI kits, it's usually both.
 
 ### Git Set up
 
