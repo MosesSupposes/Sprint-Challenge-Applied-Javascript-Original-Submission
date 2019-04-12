@@ -37,8 +37,12 @@ Edit this document to include your answers after each question. Make sure to lea
     All frontend libraries/frameworks ever made thus far deal directly with the DOM API. In recent years, there's been a trend towards abstracting away the DOM through what's known as a "virtual DOM", and enabling developers to program their UIs in a more declarative, succint style, with an added emphasis on performance (this is achieved by techniques such as "DOM diffing" -- where there's a coordinated arbitrage before making changes to DOM -- and "memoization" -- where different DOM states get cached and are thus able to be repainted to a previous state with minimal computations).
 
 2. What is an event?
+    
+    In the context of the DOM, an event is any interaction with the web page, typically induced by a user or a server. Examples of user-generated events are mouse clicks, keystrokes, and page scrolls. Server-generated events -- as commonly captured in frameworks such as React and client-side languages such as Dart and Elm -- can include incoming data from an API endpoint, establishing a real-time connection through a web socket, or sending/requesting cookies or other cache-related assets. The final type of event that can occur within the DOM are internal interactions produced by the DOM itself. One example of this is the DOM's `onload` event which fires when a DOM object has been loaded; this is most often used on the top level `<body>` element of a page to execute a script once a web page has completely loaded all of its content.
 
 3. What is an event listener?
+
+    An event listener is a higher order function that subscribes to a particular DOM event, and fires a callback function each time that event is registered.
 
 4. Why would we convert a NodeList into an Array?
 
