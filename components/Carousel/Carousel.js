@@ -35,10 +35,17 @@ class Carousel {
     displayNextImg(direction) {
         switch(direction) {
             case 'left': 
-                this.activeDisplay = this.images[this.activeIndex - 1]
+                this.activeDisplay = 
+                    (this.activeIndex <=1) 
+                        ? this.images[this.images.length - 1]
+                        : this.images[this.activeIndex - 1]
+
                 break
             case 'right': 
-                this.activeDisplay = this.images[this.activeIndex + 1]
+                this.activeDisplay = 
+                    (this.activeIndex >= this.images.length - 1)
+                        ? this.images[0]
+                        : this.images[this.activeIndex + 1]
                 break
         }
     }
@@ -53,20 +60,3 @@ class Carousel {
 
 const carousels = document.querySelectorAll('.carousel')
 carousels.forEach(Carousel.of)
-
-
-
-/**
- * -------------------------
- *          Helpers
- * -------------------------
- */
-
-// * not curried
-//  Array x ->  Int -> Bool
-function endOfLine(arr, curPosition) {
-    return arr[curPosition] ? true : false
-}
-
-// Can't get helper to work properly...
-// TODO: make carousel wrap when at the end of the line
